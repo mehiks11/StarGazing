@@ -193,21 +193,28 @@ def condition_df(city = 'greenville',state = 'sc', num_days=14):
 
 
 #Final Suggestion function
-def give_suggestions(city='greenville',state='sc',num_days=10):
+def give_suggestions(city='greenville',state='sc',num_days=10,num_show=1):
     '''
     This function takes city,state, and num_days. It returns a dictionary of ranked days to go stargazing. 
     '''
     df = condition_df(city,state,num_days).sort_values(by='rank')
     
     #make a list of labels 
-    ranking_days =['first','second','third','fourth','fifth',
-                   'sixth','seventh','eigth','ninth','tenth',
-                   'eleventh','twelvth','thirteenth','fourteenth','fifeteenth']
+    ranking_days =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     #initialize a dictionary to store ranked dates
     ranks ={}
+    conditions={}
 
     #add dates to dictionary with label
     for i in range(len(list(df['rank']))):
         ranks[ranking_days[i]] = list(df.Date)[i]
 
-    return ranks
+    for i in range(len(list(df['rank']))):
+        ranks[ranking_days[i]] = list(df.iloc[i])
+
+    #only pull number of top days wanted    
+    new_list=[]
+    for i in range(num_show):
+        new_list.append(ranks[i])
+
+    return new_list, daily_conditions

@@ -31,11 +31,13 @@ def weather_report(city,state,num_days=14):
     loc = city + ',' + state
     forecast = api.get_forecast(city = loc)
     
-    weather = pd.DataFrame(forecast.get_series(['temp','precip','rh'])).head(num_days)
+    weather = pd.DataFrame(forecast.get_series(['temp','precip','rh','clouds'])).head(num_days)
     
     weather['temp'] = weather['temp'] * (9/5) + 32 #celcius to farenheit
-    weather['precip_rank'] = weather.precip.rank().astype(int) #rankings for precipitation
-    weather['rh_rank'] = weather.rh.rank().astype(int)*2 #rankings for precipitation
+    weather['precip_rank'] = weather.precip.rank().astype(int) #ratings for precipitation
+    weather['rh_rank'] = weather.rh.rank().astype(int)/2 #ratings for precipitation
+    weather['cloud_rank'] = weather.clouds.rank().astype(int)*100 #ratings for precipitation
+    
     
     temp_ranks = []
     for temp in weather.temp:
