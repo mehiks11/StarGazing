@@ -15,8 +15,10 @@ api.set_granularity('daily')
 
 
 ##### App Display
-cover_img = Image.open('cover_img.jpg')
+url = 'https://github.com/mehiks11/StarGazing/blob/master/appstuff/cover_img.jpg?raw=true'
+cover_img = Image.open(requests.get(url,stream=True).raw)
 # st.title("Starry Nights")
+# im = Image.open(requests.get(url, stream=True).raw)
 
 
 #App UI
