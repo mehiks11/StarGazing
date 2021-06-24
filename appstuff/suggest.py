@@ -6,6 +6,7 @@ This module holds all the functions built to pull date suggestions for stargazin
 import pandas as pd
 from weatherbit.api import Api
 from datetime import date,datetime, timedelta
+import requests
 
 #set ups
     #weather set up
