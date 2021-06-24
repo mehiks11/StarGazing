@@ -7,21 +7,18 @@ import pandas as pd
 from weatherbit.api import Api
 from datetime import date,datetime, timedelta
 
-
 #set ups
     #weather set up
 api_key = "a33d21f85ef140449e22bf1475de3f1c"
 api = Api(api_key)
 api.set_granularity('daily')
-
     #moon set up
-moon_phases = pd.read_csv('https://github.com/mehiks11/StarGazing/blob/master/data/moon_phases.csv').drop(columns=['Unnamed: 3','Unnamed: 4'])
+moon_phases = pd.read_csv('https://raw.githubusercontent.com/mehiks11/StarGazing/master/data/moon_phases.csv').drop(columns=['Unnamed: 3','Unnamed: 4'])
 moon_phases.Year = moon_phases.Year.astype(str)
+
 moon_phases['Date'] = pd.to_datetime(moon_phases['Date'] + ' '+ (moon_phases['Year']))
 moon_phases.drop(columns='Year',inplace=True)
 moons = ['New Moon', 'First Quarter', 'Full Moon', 'Last Quarter']
-
-
 
 # Weather Pulling Functions
 def weather_report(city,state,num_days=14):
