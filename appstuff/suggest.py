@@ -28,7 +28,7 @@ def weather_report(city,state,num_days=14):
     '''
     loc = city + ',' + state
     forecast = api.get_forecast(city = loc)
-    
+
     weather = pd.DataFrame(forecast.get_series(['temp','precip','rh','clouds'])).head(num_days)
     
     weather['temp'] = weather['temp'] * (9/5) + 32 #celcius to farenheit
@@ -53,7 +53,6 @@ def weather_report(city,state,num_days=14):
     weather['temp_ranks']= pd.Series(temp_ranks)
     weather['bad_rate'] = weather['temp_ranks'] + weather['precip'] + weather['precip_rank'] + weather['rh_rank']
     return weather.head(num_days)
-
 
 #Moon Phase Functions
 def before_after_moon(current):
@@ -198,21 +197,13 @@ def give_suggestions(city='greenville',state='sc',num_days=10,num_show=1):
     df = condition_df(city,state,num_days).sort_values(by='rank')
     
     #make a list of labels 
-    ranking_days =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    ranking_days =list(range(1,num_show+1))
     #initialize a dictionary to store ranked dates
     ranks ={}
     conditions={}
 
     #add dates to dictionary with label
-    for i in range(len(list(df['rank']))):
-        ranks[ranking_days[i]] = list(df.Date)[i]
-
-    for i in range(len(list(df['rank']))):
-        ranks[ranking_days[i]] = list(df.iloc[i])
-
-    #only pull number of top days wanted    
-    new_list=[]
-    for i in range(num_show):
-        new_list.append(ranks[i])
-
-    return new_list, daily_conditions
+    for i in range(len(ranking_days)):
+        ranks[ranking_days[i]] = str(list(df.Date)[i]).split()[0]
+        
+    return ranks

@@ -1,5 +1,6 @@
+numpy==1.19.5
 pandas==1.2.3
 pyweatherbit==2.0.0
-numpy==1.19.5
+requests==2.25.1
 streamlit==0.82.0
 Pillow==8.2.0
