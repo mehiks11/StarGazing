@@ -4,6 +4,15 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageOps
 from suggest import *
+from weatherbit.api import Api
+from datetime import date,datetime, timedelta
+
+#set ups
+    #weather set up
+api_key = "a33d21f85ef140449e22bf1475de3f1c"
+api = Api(api_key)
+api.set_granularity('daily')
+
 
 ##### App Display
 cover_img = Image.open('cover_img.jpg')
