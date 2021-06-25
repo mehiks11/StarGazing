@@ -203,7 +203,7 @@ def give_suggestions(city='greenville',state='sc',num_days=10,num_show=1):
     conditions={}
 
     #add dates to dictionary with label
-    for i in range(num_show1):
+    for i in range(len(ranking_days)):
         ranks[ranking_days[i]] = str(list(df.Date)[i]).split()[0]
         
     return ranks
