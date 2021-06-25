@@ -109,17 +109,25 @@ with st.form(key='my_form'):
     submit_button = st.form_submit_button(label='Let\'s Stargaze!')
 
 if submit_button:
+    # for x in range(num_show1):
+    #     st.write(f'**{day_labels[x]** {suggestions[x+1]}')
+
     if type(city1)!=str:
         st.write("Sorry. Please enter a valid city name!")
     elif num_show1>num_days1:
         st.write("Sorry. The number of days you want us to show you has to be less than or equal to the number of days you want to go in!")
+    elif num_show1+2==num_days1:
+        st.write("Sorry. Please choose at least 2 days more than what you'd like to show. ")
     else:
         suggestions = give_suggestions(city=city1,state=state1,num_days=num_days1,num_show=num_show1)
         for x in range(num_show1):
             st.write(f'**{day_labels[x]}** {suggestions[x+1]}')
 
 
-
+if submit_button:
+    url = pull_locs(city1,state1)
+    st.write('Click here for places open near you to go!')
+    st.write(url)
 
 
 

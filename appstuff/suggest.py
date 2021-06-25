@@ -197,13 +197,20 @@ def give_suggestions(city='greenville',state='sc',num_days=10,num_show=1):
     df = condition_df(city,state,num_days).sort_values(by='rank')
     
     #make a list of labels 
-    ranking_days =list(range(1,num_show+1))
+    ranking_days =list(range(1,num_days))
     #initialize a dictionary to store ranked dates
     ranks ={}
     conditions={}
 
     #add dates to dictionary with label
-    for i in range(len(ranking_days)):
+    for i in range(num_show1):
         ranks[ranking_days[i]] = str(list(df.Date)[i]).split()[0]
         
     return ranks
+
+#location google search
+def pull_locs(city,state):
+    city= city.replace(' ','+')
+    state= state.replace(' ','+')
+    url = 'https://www.google.com/maps/search/'+city+'+'+state+'+'+'parks'
+    return url
