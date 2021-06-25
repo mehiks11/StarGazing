@@ -5,7 +5,7 @@ Mehika Patel
 The goal of this project was to use an automated data pipeline to create an application that is able to provide suggestions about time and locations to go stargazing to the user. The data was sourced from several sources, including moon phases data, google maps data, and weather data. I worked with streamlit to create an [application](https://share.streamlit.io/mehiks11/stargazing/appstuff/starapp.py). There will also be a more interactive map with light pollution data posted to go along with the location suggestions (posisbly with location suggestions integrated inside of the map) soon. 
 
 ## Application Basic Version: (more features to be integrated soon)
-
+https://user-images.githubusercontent.com/77343298/123438060-5276d280-d59e-11eb-82d5-ce47f7e67cfe.mov
 
 
 
