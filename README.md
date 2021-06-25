@@ -34,4 +34,4 @@ The biggest algorithm used here was the simple function created to rate and weig
 
 
 ## Communication
-In addition to the [slides](https://github.com/mehiks11/StarGazing/blob/master/deliverables/writeup.md) presented, there is a streamlit [app](https://share.streamlit.io/mehiks11/stargazing/appstuff/starapp.py).
+In addition to the [slides](https://github.com/mehiks11/StarGazing/blob/master/deliverables/Starry%20Nights.pdf) presented, there is a streamlit [app](https://share.streamlit.io/mehiks11/stargazing/appstuff/starapp.py).
